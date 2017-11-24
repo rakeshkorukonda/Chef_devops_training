@@ -25,5 +25,11 @@ git remote add origin https://github.com/rakeshkorukonda/Chef_devops_training.gi
 git push -u origin master
 
 
+To download or clone a repository:
+
+git clone <URL>
+
+git clone https://github.com/rakeshkorukonda/Chef_devops_training.git
+
 
 
