@@ -1,24 +1,49 @@
 #
-# Cookbook Name:: myfirstcookbook
+# Cookbook:: myfirst_cookbook
 # Recipe:: default
 #
-# Copyright (c) 2017 The Authors, All Rights Reserved.
+# Copyright:: 2017, The Authors, All Rights Reserved.
 
-puts node.default["name"]
-puts node.default["password"]
-puts node.default["organization"]
 
-directory 'C:/Temp/mydirectory/abc/def/ghi' do
-   recursive true
-  #     action :create
+directory '/tmp/apache2/dir1/dir2/dir3' do
+  owner 'root'
+  group 'root'
+  mode '0754'
+  recursive true
 end
 
-file 'C:/Temp/mydirectory/abc/def/ghi/firstfile.txt' do
- content "new content for the file"
-   #     action :create
+
+['/tmp/apache2','/tmp/apache2/dir1','/tmp/apache2/dir1/dir2','/tmp/apache2/dir1/dir2/dir3'].each do |path|
+directory path do
+  owner 'root'
+  group 'root'
+  mode '0754'
+  recursive true
+end
 end
 
-cookbook_file "C:/Temp/mydirectory/abc/python-installer.exe" do
-        source "python-installer.exe"
+file '/tmp/apache2/file1.txt' do
+  content 'hello world'
+  mode '0755'
+  owner 'root'
+  group 'root'
 end
 
+=begin
+carry  jre.rpm in files default folder
+copy jre.rpm to opt folder
+install jre.rpm
+=end
+cookbook_file '/opt/jre-8u151-linux-i586.rpm' do
+  source 'jre-8u151-linux-i586.rpm'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+execute 'install jre rpm' do
+  cwd '/opt'
+  command 'rpm -ivh jre-8u151-linux-i586.rpm'
+  user 'root'
+end
