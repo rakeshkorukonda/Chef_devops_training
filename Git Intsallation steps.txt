@@ -1,0 +1,29 @@
+Git Installation:
+
+Download git executable from https://git-scm.com/download/
+
+Setting up account and creating repository:
+
+1) create a account in github.com
+2) login with your credentials
+3) select new repository option
+4) enter the details for creating a new repository
+5)
+
+ …or create a new repository on the command line
+
+echo "# Chef_devops_training" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/rakeshkorukonda/Chef_devops_training.git
+git push -u origin master
+
+…or push an existing repository from the command line
+
+git remote add origin https://github.com/rakeshkorukonda/Chef_devops_training.git
+git push -u origin master
+
+
+
+
